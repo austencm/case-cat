@@ -1,0 +1,81 @@
+%center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+%vertical-center {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+%clearfix {
+  &:before, &:after {
+    content: ' ';
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+%fill-parent {
+	position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+
+@mixin center($limit-width: null, $extend: true) {
+	@if $extend {
+    @extend %center;
+  }
+  @else {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+	@if $limit-width {
+		width: $limit-width;
+		max-width: 100%;
+	}
+}
+
+@mixin length-shorthand($lengths, $prefix: '') {
+  @if length($lengths) == 1 {
+    $lengths: join($lengths, $lengths);
+  }
+  @if length($lengths) == 2 {
+    $lengths: join($lengths, $lengths);
+  }
+  @else if length($lengths) == 3 {
+    $lengths: append($lengths, nth($lengths, 2));
+  }
+
+  @each $side-val in zip($lengths, top right bottom left) {
+		$side: nth($side-val, 2);
+		$val: nth($side-val, 1);
+		@if ($val != null) {
+			#{$prefix}#{$side}: $val;
+		}
+	}
+}
+
+@mixin padding($lengths) {
+  @include length-shorthand($lengths, 'padding-');
+}
+
+@mixin margin($lengths) {
+  @include length-shorthand($lengths, 'margin-');
+}
+
+@mixin pos($pos, $top: null, $left: null, $right: null, $bottom: null) {
+  position: $pos;
+  @if $top { top: $top; }
+  @if $left { left: $left; }
+  @if $right { right: $right; }
+  @if $bottom { bottom: $bottom; }
+}

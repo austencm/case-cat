@@ -1,0 +1,37 @@
+doctype html
+html
+  head
+    link(href='styles/icons.css', rel='stylesheet')
+    link(href='styles/main.css', rel='stylesheet')
+
+  body
+    form#options(enctype='multipart/form-data')
+      h1 Options
+
+      .form-group
+        //- label
+        //-   input(type='checkbox', name='copy_to_clipboard')
+        //-   | Copy transformed text to clipboard
+        //- label
+        //-   input(type='checkbox', name='notify_when_copied')
+        //-   | Show a notification when transformed text is copied
+        label
+          input(type='checkbox', name='replace_text')
+          | Replace selected text with transformed text in editable areas
+        label
+          input(type='checkbox', name='hide_dev')
+          | Hide developer formatting options
+
+    footer#links
+      a(href='http://twitter.com/austencm', target='_blank')
+        i.icon-twitter
+        label Say hello
+      a(href='https://github.com/austencm/case-cat', target='_blank')
+        i.icon-github
+        label Contribute
+      a(href='https://www.paypal.me/austencm/2', target='_blank')
+        i.icon-coffee
+        label Buy me a coffee :3
+      label#hover-label
+
+    script(src='scripts/options.js')

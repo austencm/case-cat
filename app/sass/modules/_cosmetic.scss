@@ -1,0 +1,46 @@
+%custom-bullet {
+	list-style-type: none;
+
+  &::before {
+    content: '';
+    display: list-item;
+    height: 1em;
+    margin-bottom: -1em;
+    list-style-type: disc;
+  }
+}
+
+@mixin bullet {
+  @extend %custom-bullet;
+
+  &::before {
+  	@content;
+  }
+}
+
+%triangle-base {
+	width: 0;
+  height: 0;
+  border: {
+    style: solid;
+    width: 0;
+    color: transparent;
+  }
+}
+
+@mixin triangle($point, $color: #000, $width: 1em, $height: $width * 2) {
+  @extend %triangle-base;
+
+  @if $point == up { $point: top; }
+  @else if $point == down { $point: bottom; }
+
+  $directions: (0: top, 1: right, 2: bottom, 3: left);
+  $i: ( index( map-values($directions), $point ) + 1 ) % 4;
+
+  border-#{ map-get($directions, $i) }: {
+    width: $width;
+    color: $color;
+  }
+  border-#{ map-get($directions, ($i + 3) % 4) }-width: $height / 2;
+  border-#{ map-get($directions, ($i + 1) % 4) }-width: $height / 2;
+}

@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "CaseCat",
+    "description": "The name of the application"
+  },
+  "appDescription": {
+    "message": "Case conversion extension for Chrome.",
+    "description": "The description of the application"
+  }
+}

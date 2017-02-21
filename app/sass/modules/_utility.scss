@@ -1,0 +1,22 @@
+@function color($key) {
+  @return if(map-has-key($colors, $key), map-get($colors, $key), $key);
+}
+
+@function slice($list, $start: 1, $end: length($list)) {
+  @if length($list) < 1 or $start > $end {
+    @return ();
+  }
+
+  $result: ();
+
+  @for $i from $start through $end {
+    $result: append($result, nth($list, $i));
+  }
+
+  @return $result;
+}
+
+@function img($filename) {
+	$image-dir: '/wp-content/uploads' !default !global;
+	@return unquote( 'url(#{ $image-dir }/#{ $filename })' );
+}

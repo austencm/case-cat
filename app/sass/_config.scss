@@ -1,0 +1,46 @@
+@mixin extendable-set($item-map, $prefix, $props) {
+  @each $key, $val in $item-map {
+    @at-root %#{ $prefix }-#{ $key } {
+      $i: 1;
+      @each $prop in $props {
+        #{ nth($props, $i) }: #{ nth($val, $i) };
+        $i: $i + 1;
+      }
+    }
+  }
+}
+
+$colors: () !default;
+$colors-default: (
+	primary: #001F3F,
+	secondary: #FF4136,
+	light: #fff,
+	light-2: #f3f3f3,
+	dark: #222,
+	heading: #001F3F,
+	content: #444,
+	ui: #0085d9
+);
+$colors: if($colors, map-merge($colors-default, $colors), $colors-default);
+
+$fonts: () !default;
+$fonts-default: (
+	heading: '"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif',
+	body: 'Geneva, Tahoma, Verdana, sans-serif',
+	mono: '"Lucida Sans Typewriter", "Lucida Typewriter", "Courier New", Courier, monospace'
+) !default;
+$fonts: if($fonts, map-merge($fonts-default, $fonts), $fonts-default);
+
+@include extendable-set($fonts, font, font-family);
+
+$transitions: () !default;
+$transitions-default: (
+	default: 0.3s ease-in-out,
+	in: 0.4s ease-in,
+	out: 0.2s ease-out,
+	bounce-in: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045),
+	bounce-out: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+) !default;
+$transitions: if($transitions, map-merge($transitions-default, $transitions), $transitions-default);
+
+@include extendable-set($transitions, transition, transition-duration transition-timing-function);

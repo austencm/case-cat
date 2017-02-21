@@ -1,0 +1,30 @@
+@mixin font-family($key) {
+  @extend %font-#{ $key };
+}
+
+@mixin font($size, $weight: null, $style: null) {
+	font-size: $size;
+	@if $weight { font-weight: $weight; }
+	@if $style { font-style: $style; }
+}
+
+@mixin scaled-line($font-size, $line-height) {
+	line-height: ($line-height / $font-size) * 1em;
+}
+
+@mixin font-face($name, $filename, $weight: normal, $style: normal) {
+	$src: '/wp-content/themes/Divi-child/fonts/#{$filename}';
+
+	@font-face {
+		font-family: $name;
+		src: url('#{$src}.eot'); // IE9 compat
+		src: url('#{$src}.eot?#iefix') format('embedded-opentype'), // IE8 and below
+			// url('#{$src}.woff2') format('woff2'),
+			url('#{$src}.woff') format('woff'), // standards
+			url('#{$src}.ttf') format('truetype'), // Safari, Android, iOS
+			url('#{$src}.svg##{$name}') format('svg'); // legacy iOS
+
+		font-style: $style;
+		font-weight: $weight;
+	}
+}

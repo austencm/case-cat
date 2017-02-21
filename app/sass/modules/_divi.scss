@@ -1,0 +1,35 @@
+// .et_pb_button.et_pb_button,
+// .et_pb_promo.et_pb_promo .et_pb_button.et_pb_button {
+// 	@extend %button;
+// 	@extend %button-ghost;
+// }
+
+%row,
+.et_pb_row:not(.et_pb_row_fullwidth),
+.container,
+.container-custom {
+	padding-left: 30px !important;
+	padding-right: 30px !important;
+	@include center;
+
+	@each $name, $val in $breakpoints {
+		@if $val > 768px and $val < 1441px {
+			@include bp('+#{$name}') {
+				width: $val;
+			}
+		}
+	}
+
+	@include bp(-s) {
+		width: 100%;
+	}
+}
+
+%row-full, .et_pb_row.et_pb_row_fullwidth {
+	width: 100% !important;
+	max-width: none !important;
+}
+
+// .et_pb_column {
+// 	@extend %clearfix;
+// }

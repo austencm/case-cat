@@ -1,0 +1,59 @@
+/**
+ *  MIXIN: bp
+ *
+ *  Accepts a list of breakpoint values and outputs media queries
+ *
+ *  Breakpoint values are preceeded by a '+' or '-', denoting whether the query should target widths above or below that value
+ *  Breakpoint vaules can be a key representing a width defined in $breakpoints, e.g.:  @include bp( -xl ) ...
+ * 											  OR a non-unitless number, e.g.:  @include bp( +20em ) ...
+ *  Multiple values can be used to create ranges, e.g.:  @include bp( +s, -m ) ...
+ *
+ *  NOTE: To avoid breakpoint overlap, min-width breakpoint values are treated as inclusive, while max-width values are not (a tiny bit is subtracted)
+ * 			 For example, if you wrote:  @include bp( -768px, -20em ) ...
+ * 			    The query would become:  (max-width: 767px) and (max-width: 19.9999em) ...
+ *  NOTE: Relies on the custom list slice function
+ */
+
+
+$breakpoints: (
+  'xxs': 321px,
+  'xs': 480px,
+  's': 769px,
+  'm': 981px,
+  'l': 1200px,
+  'xl': 1440px
+) !default;
+
+
+@mixin bp($sizes...) {
+	@if length($sizes) == 0 {
+		@content;
+	}
+	@else {
+		$size: nth($sizes, 1);
+		$prop: null;
+		$val: null;
+
+    @if (type-of($size) == 'number') {
+      $val: abs($size);
+		  $prop: if($size > 0, 'min', 'max');
+		}
+    @else {
+      $val: map-get( $breakpoints, str-slice($size, 2) );
+		  $prop: if(str-slice($size, 1, 1) == '+', 'min', 'max');
+    }
+
+    $prop: #{ $prop }-width;
+
+		@if ($prop == max-width) {
+			$val: $val - if(unit($val) == px, 1, 0.0001);
+		}
+
+		@media only screen and #{ unquote('(#{ $prop }: #{ $val })') } {
+	    // Recursive call
+	    @include bp(slice($sizes, 2)...) {
+	      @content;
+	    }
+	  }
+	}
+}
