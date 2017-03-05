@@ -1,6 +1,6 @@
 {
   "name": "Case Cat",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "manifest_version": 2,
   "description": "Format and convert the case of selected text.",
   "icons": {

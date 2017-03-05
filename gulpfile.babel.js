@@ -13,7 +13,7 @@ gulp.task('extras', () => {
     'app/_locales/**',
     'app/styles/**',
     'app/fonts/**',
-    // '!app/scripts.babel{,/**}',
+    '!app/scripts.babel{,/**}',
     '!app/*.json',
     '!app/*.html',
   ], {
@@ -81,19 +81,15 @@ gulp.task('css', () => {
 });
 
 gulp.task('js', () => {
-  gulp.src('app/scripts/*.js')
-    // .pipe( $.uglify() )
+  return gulp.src('app/scripts/options.js')
+    .pipe( $.uglify() )
     .pipe( gulp.dest('dist/scripts') )
-
-  return gulp.src('app/scripts/vendor/*.js')
-    // .pipe( $.uglify() )
-    .pipe( gulp.dest('dist/scripts/vendor') )
 })
 
 gulp.task('chromeManifest', () => {
   return gulp.src('app/manifest.json')
     .pipe($.chromeManifest({
-      buildnumber: true,
+      buildnumber: false,
       background: {
         target: 'scripts/background.js',
         exclude: [
@@ -103,7 +99,7 @@ gulp.task('chromeManifest', () => {
   }))
   .pipe($.if('*.css', $.cleanCss({compatibility: '*'})))
   .pipe($.if('*.js', $.sourcemaps.init()))
-  // .pipe($.if('*.js', $.uglify()))
+  .pipe($.if('*.js', $.uglify()))
   .pipe($.if('*.js', $.sourcemaps.write('.')))
   .pipe(gulp.dest('dist'));
 });
@@ -157,7 +153,7 @@ gulp.task('package', function () {
 gulp.task('build', (cb) => {
   runSequence(
     'lint', 'babel', 'chromeManifest',
-    ['sass', 'pug', 'html', 'images', 'extras'],
+    ['js', 'sass', 'pug', 'html', 'images', 'extras'],
     'size', cb);
 });
 
