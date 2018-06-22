@@ -1,11 +1,10 @@
-// generated on 2016-11-13 using generator-chrome-extension 0.6.1
-import gulp from 'gulp';
-import gulpLoadPlugins from 'gulp-load-plugins';
-import del from 'del';
-import runSequence from 'run-sequence';
-import {stream as wiredep} from 'wiredep';
+import gulp from 'gulp'
+import gulpLoadPlugins from 'gulp-load-plugins'
+import del from 'del'
+import runSequence from 'run-sequence'
+import {stream as wiredep} from 'wiredep'
 
-const $ = gulpLoadPlugins();
+const $ = gulpLoadPlugins()
 
 gulp.task('extras', () => {
   return gulp.src([
@@ -81,7 +80,7 @@ gulp.task('css', () => {
 });
 
 gulp.task('js', () => {
-  return gulp.src('app/scripts/options.js')
+  return gulp.src('app/scripts/**/*.js')
     .pipe( $.uglify() )
     .pipe( gulp.dest('dist/scripts') )
 })
@@ -90,12 +89,12 @@ gulp.task('chromeManifest', () => {
   return gulp.src('app/manifest.json')
     .pipe($.chromeManifest({
       buildnumber: false,
-      background: {
-        target: 'scripts/background.js',
-        exclude: [
-          'scripts/chromereload.js'
-        ]
-      }
+      // background: {
+      //   target: 'scripts/background.js',
+      //   exclude: [
+      //     'scripts/chromereload.js'
+      //   ]
+      // }
   }))
   .pipe($.if('*.css', $.cleanCss({compatibility: '*'})))
   .pipe($.if('*.js', $.sourcemaps.init()))
@@ -105,7 +104,7 @@ gulp.task('chromeManifest', () => {
 });
 
 gulp.task('babel', () => {
-  return gulp.src('app/scripts.babel/*.js')
+  return gulp.src('app/scripts.babel/**/*.js')
       .pipe($.babel({
         presets: ['es2015']
       }))
@@ -146,7 +145,7 @@ gulp.task('wiredep', () => {
 gulp.task('package', function () {
   var manifest = require('./dist/manifest.json');
   return gulp.src('dist/**')
-      .pipe($.zip('CaseCat-' + manifest.version + '.zip'))
+      .pipe($.zip('YouTubeAutoLike-' + manifest.version + '.zip'))
       .pipe(gulp.dest('package'));
 });
 

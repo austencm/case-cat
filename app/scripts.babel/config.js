@@ -3,9 +3,7 @@ window.Config = {
 		{
 			id: 'sentence',
 			title: 'Sentence',
-			func: (text) => {
-				return Case.sentence(text).replace(/\bi\b/g, 'I')
-			}
+			func: text => Case.sentence(text).replace(/\bi\b/g, 'I'),
 		}, {
 			id: 'title',
 			title: 'Title',
@@ -22,24 +20,7 @@ window.Config = {
 			id: 'capital',
 			title: 'Capitalize',
 			func: Case.capital
-		},
-
-		// flip: {
-		// 	title: 'Flip',
-		// 	category: 'fun',
-		// 	func: () => {
-
-		// 	}
-		// },
-		// bubble: {
-		// 	title: 'Bubble',
-		// 	category: 'fun',
-		// 	func: () => {
-
-		// 	}
-		// },
-
-		{
+		}, {
 			id: 'hyphen',
 			title: 'Hyphenated',
 			category: 'developer',
