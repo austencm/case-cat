@@ -1,6 +1,6 @@
 {
-  "name": "Case Cat",
-  "version": "1.1.0",
+  "name": "Case Cat - Text Converter",
+  "version": "1.2.0",
   "manifest_version": 2,
   "description": "Format and convert case of selected text.",
   "icons": {
@@ -21,7 +21,6 @@
   ],
   "background": {
     "scripts": [
-      "scripts/chromereload.js",
       "scripts/vendor/Case.js",
       "scripts/config.js",
       "scripts/modules/option-manager.js",
