@@ -1,4 +1,4 @@
-# Case Cat
+# Case Cat &nbsp; `:3`
 
 Chrome extension  &nbsp;|&nbsp;  Format and convert case of selected text. Automatically replace original text within the page.
 
@@ -20,4 +20,5 @@ Chrome extension  &nbsp;|&nbsp;  Format and convert case of selected text. Autom
 - Constant `CONSTANT_FORMAT`
 - Convert to base64 or encode text for a URI
 
-`:3`
+## Update History
+- _Jun 22, 2018_ &nbsp; **1.2.0** ~ Text replacement within HTML; Base64 and URI encode options; UI refresh; Codebase cleanup
