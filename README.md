@@ -1,23 +1,23 @@
 # Case Cat
 
-Chrome extension | Format and convert the case of selected text.
+Chrome extension  &nbsp;|&nbsp;  Format and convert case of selected text. Automatically replace original text within the page.
 
 > _**[Get it in the Web Store!](https://chrome.google.com/webstore/detail/case-cat/lglonldeanebhiaeocgeifacebknejjp)**_
 
 #### Featuring the following formats:
 
-- Sentence case
+- Pretty standard sentence case
 - Title Case is an Option
-- UPPER CASE
-- lower case
+- UPPERCASE
+- lowercase
 - Capitalize Every Word
 
 #### Plus optional formatting for developers:
 
-- `hyphenated-format`
-- `underscored_format`
-- `CamelCase`
-- `CONSTANT_FORMAT`
+- Hyphenated `hyphenated-format`
+- Underscored `underscored_format`
+- Camel `CamelCase`
+- Constant `CONSTANT_FORMAT`
+- Convert to base64 or encode text for a URI
 
-
-:3
+`:3`
