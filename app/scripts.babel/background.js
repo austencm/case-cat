@@ -1,8 +1,8 @@
 const optionManager = new OptionManager({
   default: {
-    'replace_text': 'on',
+    // 'copy_to_clipboard': true,
+    'replace_text': true,
   	'hide_dev': false,
-    // 'copy_to_clipboard': 'on',
   	// 'notify_when_copied': 'on',
   },
 });
@@ -76,15 +76,18 @@ function contextItemClicked(event) {
 			// }
 		// }
 
-		if (options.replace_text && event.editable) {
-			pasteInPage();
+		if (options.replace_text) {
+			pasteInPage({
+        text: transformedText,
+        editable: event.editable,
+      });
     }
 	})
 }
 
-function pasteInPage() {
+function pasteInPage({ text, editable = false }) {
 	chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
-    chrome.tabs.sendMessage(tabs[0].id, {});
+    chrome.tabs.sendMessage(tabs[0].id, { text, editable });
   });
 }
 
