@@ -6,8 +6,8 @@ const optionManager = new OptionManager({
   form: document.querySelector('#options-form'),
   default: {
     // 'copy_to_clipboard': true,
-    'replace_text': true,
-  	'hide_dev': false,
+    replace_text: 'on',
+  	hide_dev: false,
   	// 'notify_when_copied': 'on',
   },
 });

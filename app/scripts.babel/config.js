@@ -7,29 +7,29 @@ window.Config = {
 		}, {
 			id: 'title',
 			title: 'Title',
-			func: Case.title
+			func: Case.title,
 		}, {
 			id: 'upper',
 			title: 'Upper',
-			func: Case.upper
+			func: Case.upper,
 		}, {
 			id: 'lower',
 			title: 'Lower',
-			func: Case.lower
+			func: Case.lower,
 		}, {
 			id: 'capital',
 			title: 'Capitalize',
-			func: Case.capital
+			func: Case.capital,
 		}, {
 			id: 'hyphen',
 			title: 'Hyphenated',
 			category: 'developer',
-			func: Case.kebab
+			func: Case.kebab,
 		}, {
 			id: 'underscore',
 			title: 'Underscored',
 			category: 'developer',
-			func: Case.snake
+			func: Case.snake,
 		}, {
 			id: 'camel',
 			title: 'Camel',
@@ -39,7 +39,17 @@ window.Config = {
 			id: 'constant',
 			title: 'Constant',
 			category: 'developer',
-			func: Case.constant
-		}
+			func: Case.constant,
+		}, {
+      id: 'encodeUri',
+      title: 'Encode URI',
+      category: 'encode',
+      func: encodeURIComponent,
+    }, {
+      id: 'base64',
+      title: 'Base64',
+      category: 'encode',
+      func: text => btoa(unescape(encodeURIComponent(text))),
+    },
 	]
-}
+};

@@ -1,47 +1,55 @@
 const optionManager = new OptionManager({
   default: {
     // 'copy_to_clipboard': true,
-    'replace_text': true,
-  	'hide_dev': false,
+    replace_text: 'on',
+  	hide_dev: false,
   	// 'notify_when_copied': 'on',
   },
 });
 
 function addContextMenus() {
-	chrome.contextMenus.create({
-		id: 'case-cat',
-		title: 'Case Cat',
-		contexts: ['selection'],
-	});
+  chrome.contextMenus.removeAll(() => {
+  	chrome.contextMenus.create({
+  		id: 'case-cat',
+  		title: 'Case Cat',
+  		contexts: ['selection'],
+  	});
 
-	optionManager.get().then(options => {
-		let currentCategory = '';
+  	optionManager.get().then(options => {
+  		let lastCategory = '';
 
-		Config.transforms.forEach(transform => {
-			if (options.hide_dev && transform.category && transform.category === 'developer') {
-        return;
-      }
+  		window.Config.transforms.forEach(transform => {
+        const { category } = transform;
 
-			// Separator
-			if (transform.category && transform.category !== currentCategory) {
-				currentCategory = transform.category;
+  			if (
+          options.hide_dev &&
+          category &&
+          (category === 'developer' || category === 'encode')
+        ) {
+          return;
+        }
 
-				chrome.contextMenus.create({
-					type: 'separator',
-					id: `separator-${currentCategory}`,
-					parentId: 'case-cat',
-					contexts: ['selection'],
-				});
-			}
+  			// Separator
+  			if (category && category !== lastCategory) {
+  				lastCategory = category;
 
-			chrome.contextMenus.create({
-				id: transform.id,
-				parentId: 'case-cat',
-				title: transform.title,
-				contexts: ['selection'],
-			});
-		});
-	});
+  				chrome.contextMenus.create({
+  					type: 'separator',
+  					id: `separator-${lastCategory}`,
+  					parentId: 'case-cat',
+  					contexts: ['selection'],
+  				});
+  			}
+
+  			chrome.contextMenus.create({
+  				id: transform.id,
+  				parentId: 'case-cat',
+  				title: transform.title,
+  				contexts: ['selection'],
+  			});
+  		});
+  	});
+  });
 }
 
 function contextItemClicked(event) {
@@ -105,9 +113,9 @@ function copyToClipboard(text) {
 
 chrome.runtime.onInstalled.addListener(addContextMenus);
 
-chrome.storage.onChanged.addListener((changes, namespace) => {
-	if ( Object.keys(changes).includes('hide_dev') ) {
-		chrome.contextMenus.removeAll(addContextMenus);
+chrome.storage.onChanged.addListener(({ options }, namespace) => {
+	if (options.newValue && options.newValue.hide_dev !== options.oldValue.hide_dev) {
+		addContextMenus();
 	}
 });
 
