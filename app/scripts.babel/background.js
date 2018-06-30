@@ -112,7 +112,7 @@ function copyToClipboard(text) {
 }
 
 chrome.runtime.onInstalled.addListener(addContextMenus);
-
+chrome.runtime.onStartup.addListener(addContextMenus);
 chrome.storage.onChanged.addListener(({ options }, namespace) => {
 	if (options.newValue && options.newValue.hide_dev !== options.oldValue.hide_dev) {
 		addContextMenus();
