@@ -14,24 +14,19 @@ export class OptionManager {
 
   /**
    * Retreive all options
-   * @return {Promise} Contains options object on resolve
    */
-  get() {
-    return new Promise((resolve, reject) => {
-      chrome.storage.sync.get({ options: this.defaults }, (items) =>
-        resolve(items.options)
-      )
+  async get() {
+    const { options } = await chrome.storage.sync.get({
+      options: this.defaults,
     })
+
+    return options
   }
 
   /**
    * Set options
-   * @param {Object} options Key-value pairs of options to set
-   * @return {Promise}
    */
-  set(options) {
-    return new Promise((resolve, reject) => {
-      chrome.storage.sync.set({ options }, resolve)
-    })
+  async set(options) {
+    return chrome.storage.sync.set({ options })
   }
 }
