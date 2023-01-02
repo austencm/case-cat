@@ -1,5 +1,5 @@
 import * as changeCase from 'change-case-all'
-import toUnicode from 'to-unicode'
+import { square, sansSerif, fraktur, circle, script } from 'unicode-fonts-js'
 import zalgo from 'to-zalgo'
 
 export const transforms = [
@@ -24,9 +24,9 @@ export const transforms = [
     func: changeCase.lowerCase,
   },
   {
-    name: 'Capitalize',
+    name: 'Random',
     group: 'prose',
-    func: changeCase.upperCaseFirst,
+    func: changeCase.spongeCase,
   },
 
   {
@@ -79,42 +79,32 @@ export const transforms = [
   {
     name: 'Bold',
     group: 'unicode',
-    func: (string) => toUnicode(string, 'mathSansBold'),
+    func: (string) => sansSerif(string, { fontStyle: 'bold' }),
   },
   {
     name: 'Italic',
     group: 'unicode',
-    func: (string) => toUnicode(string, 'mathSansItalic'),
+    func: (string) => sansSerif(string, { fontStyle: 'italic' }),
   },
   {
-    name: 'Cursive',
+    name: 'Script',
     group: 'unicode',
-    func: (string) => toUnicode(string, 'mathBoldScript'),
+    func: script,
   },
   {
     name: 'Fraktur',
     group: 'unicode',
-    func: (string) => toUnicode(string, 'mathBoldFraktur'),
+    func: fraktur,
   },
   {
-    name: 'Small Caps',
+    name: 'Circle',
     group: 'unicode',
-    func: (string) => toUnicode(string, 'smallCaps'),
+    func: circle,
   },
   {
-    name: 'Flipped',
+    name: 'Square',
     group: 'unicode',
-    func: (string) => toUnicode(string, 'inverted'),
-  },
-  {
-    name: 'Circled',
-    group: 'unicode',
-    func: (string) => toUnicode(string, 'circled'),
-  },
-  {
-    name: 'Squared',
-    group: 'unicode',
-    func: (string) => toUnicode(string, 'squared'),
+    func: square,
   },
   {
     name: 'Zalgo',

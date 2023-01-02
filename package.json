@@ -33,8 +33,8 @@
   },
   "dependencies": {
     "change-case-all": "^1.0.15",
-    "to-unicode": "^1.0.2",
-    "to-zalgo": "^1.0.1"
+    "to-zalgo": "^1.0.1",
+    "unicode-fonts-js": "^0.2.2"
   },
   "prettier": {
     "singleQuote": true,
