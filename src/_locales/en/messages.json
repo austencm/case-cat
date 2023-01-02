@@ -1,0 +1,23 @@
+{
+  "appName": {
+    "message": "Case Cat"
+  },
+  "appDescription": {
+    "message": "A text transformer extension."
+  },
+  "optionReplace": {
+    "message": "Try to replace selected text"
+  },
+  "optionShowGroups": {
+    "message": "Show groups:"
+  },
+  "linkReport": {
+    "message": "Not working?"
+  },
+  "donateAppeal": {
+    "message": "Even small projects like this one take time to maintain. If you feel it's worth a couple bucks, you can buy my cats a snack."
+  },
+  "donateLink": {
+    "message": "Cat snack store"
+  }
+}

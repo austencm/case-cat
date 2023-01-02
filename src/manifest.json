@@ -1,0 +1,36 @@
+{
+  "name": "__MSG_appName__",
+  "description": "__MSG_appDescription__",
+  "homepage_url": "https://github.com/austencm/case-cat",
+  "version": "2.0.0",
+  "manifest_version": 3,
+  "default_locale": "en",
+  "permissions": [
+    "activeTab",
+    "declarativeContent",
+    "scripting",
+    "clipboardRead",
+    "clipboardWrite",
+    "contextMenus",
+    "storage"
+  ],
+  "incognito": "split",
+  "icons": {
+    "128": "images/icon-128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "images/icon-16.png",
+      "32": "images/icon-32.png",
+      "48": "images/icon-48.png"
+    },
+    "default_title": "Options",
+    "default_popup": "options.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_ui": {
+    "page": "options.html"
+  }
+}

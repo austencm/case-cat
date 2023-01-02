@@ -1,24 +1,34 @@
-# Case Cat &nbsp; `:3`
+# Case Cat `:3`
 
-Chrome extension  &nbsp;|&nbsp;  Format and convert case of selected text. Automatically replace original text within the page.
+A text transformer extension for Chrome.
 
-> _**[Get it in the Web Store!](https://chrome.google.com/webstore/detail/case-cat/lglonldeanebhiaeocgeifacebknejjp)**_
+> [Web Store](https://chrome.google.com/webstore/detail/case-cat/lglonldeanebhiaeocgeifacebknejjp)
 
-#### Featuring the following formats:
+![](https://img.shields.io/chrome-web-store/users/lglonldeanebhiaeocgeifacebknejjp)
 
-- Pretty standard sentence case
-- Title Case is an Option
-- UPPERCASE
-- lowercase
-- Capitalize Every Word
+## Usage
 
-#### Plus optional formatting for developers:
+1. Highlight some text and right click on it
+1. Hover over 'Case Cat' in the menu and choose a transformation
+1. Case Cat will attempt to replace the text on the page (optional). The transformed text will also be copied to the clipboard.
 
-- Hyphenated `hyphenated-format`
-- Underscored `underscored_format`
+> ☝️ Text replacement works well in text boxes, but is inconsistent elsewhere (for now).
+
+## Formats
+
+### Writing
+
+- Sentence case
+- Title case
+- Uppercase
+- Lowercase
+- Capitalize every word
+
+### Utility
+
+- Hyphenate `hyphenated-format`
+- Underscore `underscored_format`
 - Camel `CamelCase`
 - Constant `CONSTANT_FORMAT`
-- Convert to base64 or encode text for a URI
-
-## Update History
-- _Jun 22, 2018_ &nbsp; **1.2.0** ~ Text replacement within HTML; Base64 and URI encode options; UI refresh; Codebase cleanup
+- Convert to base64
+- URI encode
