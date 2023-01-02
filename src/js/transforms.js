@@ -1,4 +1,6 @@
 import * as changeCase from 'change-case-all'
+import toUnicode from 'to-unicode'
+import zalgo from 'to-zalgo'
 
 export const transforms = [
   {
@@ -71,6 +73,57 @@ export const transforms = [
   {
     name: 'Base64',
     group: 'utility',
-    func: (text) => btoa(unescape(encodeURIComponent(text))),
+    func: (string) => btoa(unescape(encodeURIComponent(string))),
+  },
+
+  {
+    name: 'Bold',
+    group: 'unicode',
+    func: (string) => toUnicode(string, 'mathSansBold'),
+  },
+  {
+    name: 'Italic',
+    group: 'unicode',
+    func: (string) => toUnicode(string, 'mathSansItalic'),
+  },
+  {
+    name: 'Cursive',
+    group: 'unicode',
+    func: (string) => toUnicode(string, 'mathBoldScript'),
+  },
+  {
+    name: 'Fraktur',
+    group: 'unicode',
+    func: (string) => toUnicode(string, 'mathBoldFraktur'),
+  },
+  {
+    name: 'Small Caps',
+    group: 'unicode',
+    func: (string) => toUnicode(string, 'smallCaps'),
+  },
+  {
+    name: 'Flipped',
+    group: 'unicode',
+    func: (string) => toUnicode(string, 'inverted'),
+  },
+  {
+    name: 'Circled',
+    group: 'unicode',
+    func: (string) => toUnicode(string, 'circled'),
+  },
+  {
+    name: 'Squared',
+    group: 'unicode',
+    func: (string) => toUnicode(string, 'squared'),
+  },
+  {
+    name: 'Zalgo',
+    group: 'unicode',
+    func: zalgo,
+  },
+  {
+    name: 'Zalgo (max curse)',
+    group: 'unicode',
+    func: (string) => zalgo(string, { size: 'maxi' }),
   },
 ]

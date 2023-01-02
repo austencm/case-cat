@@ -32,7 +32,9 @@
     "zip-webpack-plugin": "^4.0.1"
   },
   "dependencies": {
-    "change-case-all": "^1.0.15"
+    "change-case-all": "^1.0.15",
+    "to-unicode": "^1.0.2",
+    "to-zalgo": "^1.0.1"
   },
   "prettier": {
     "singleQuote": true,
