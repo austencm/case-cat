@@ -1,15 +1,15 @@
-const path = require('path');
-const RunChromeExtension = require('webpack-run-chrome-extension');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ZipWebpackPlugin = require('zip-webpack-plugin');
-const package = require('./package.json');
+const path = require('path')
+const RunChromeExtension = require('webpack-run-chrome-extension')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const ZipWebpackPlugin = require('zip-webpack-plugin')
+const package = require('./package.json')
 
-const IS_PROD = process.env.NODE_ENV === 'production';
+const IS_PROD = process.env.NODE_ENV === 'production'
 const paths = {
   build: path.resolve(__dirname, 'dist'),
   src: path.resolve(__dirname, 'src'),
-};
+}
 
 module.exports = {
   mode: IS_PROD ? 'production' : 'development',
@@ -41,7 +41,7 @@ module.exports = {
     IS_PROD &&
       new ZipWebpackPlugin({
         path: '../',
-        filename: `release-v${package.version}.zip`,
+        filename: `${package.name}-v${package.version}.zip`,
       }),
     !IS_PROD &&
       new RunChromeExtension({
@@ -74,4 +74,4 @@ module.exports = {
   optimization: {
     minimize: IS_PROD,
   },
-};
+}
