@@ -12,7 +12,9 @@ A text transformer extension for Chrome.
 1. Hover over 'Transform Text' in the menu and choose a format.
 1. The transformed text is copied to your clipboard. Optionally, Case Cat will attempt to replace the selected text on the page.
 
-> ☝️ Text replacement works well in text boxes, but is inconsistent elsewhere.
+> ☝️ Text replacement works well in text boxes, but can be inconsistent elsewhere.
+
+<img width="724" alt="Screen Shot 2023-01-02 at 1 55 00 PM" src="https://user-images.githubusercontent.com/6107869/210432663-de440029-eba8-4765-8523-deefe8a5537c.png">
 
 ## All Formats
 
