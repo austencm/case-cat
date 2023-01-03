@@ -7,7 +7,6 @@
   "default_locale": "en",
   "permissions": [
     "activeTab",
-    "declarativeContent",
     "scripting",
     "clipboardRead",
     "clipboardWrite",
